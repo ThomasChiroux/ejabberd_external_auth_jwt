@@ -1,0 +1,6 @@
+#!/bin/sh
+pipenv lock --pre
+pipenv lock --pre -r > requirements.txt
+pipenv run python setup.py install && pipenv run python setup.py sdist bdist_wheel
+# return in develop state
+pipenv run python setup.py develop

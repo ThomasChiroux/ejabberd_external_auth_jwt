@@ -1,0 +1,56 @@
+# ==============================================================================
+# == jwt external auth for ejabberd
+# ==============================================================================
+
+# == user claim: the token we will check the login against
+# == OPTIONAL
+# == default: "sub"
+user_claim: "jid"
+
+# == jwt_secret: a string used for check jwt signing.
+# == for good security, use at least 32byte random string
+# == MANDATORY
+jwt_secret: ""
+
+# == jwt_secret old: a string used for check jwt signing.
+# == for good security, use at least 32byte random string
+# == This is the "previous" secret. Use this in order to keep working the last
+# == secret for a while (this method allow a better and more often rotation
+# == of secrets)
+# == event an auto-rotation at each new release of your application for example
+# == OPTIONAL
+# == default: None
+jwt_secret_old: ""
+
+# == algorithm used to sign the JWT
+# == OPTIONAL
+# == default: "HS256"
+jwt_algorithm: "HS256"
+
+# == issuer (jwt key: "iss")
+# == if provided, the jwt will be checked against this value
+# == OPTIONAL
+# == default : None
+issuer: "https://www.myapplication.com"
+
+# == audience (jwt key: "aud")
+# == if provided, the jwt will be checked against this value
+# == OPTIONAL
+# == default : None
+audience: "https://www.myapplication.com"
+
+# == jwt expiration, server-side
+# == in addition to the (optional but "conseillé") "exp" key
+# == the authentication can check a "server-side" expiration
+# == If set, the jwt key 'iat' becomes mandatory
+# == unit: seconds
+# == OPTIONAL
+# == default: None
+jwt_expiration: 86400
+
+# == leeway: add some margin for all verification based on time.
+# == this allows some margin if servers timing are not aligned
+# == unit: secondes
+# == OPTIONAL
+# == default: 10
+leeway: 10
